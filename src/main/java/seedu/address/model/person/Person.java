@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import seedu.address.model.person.policy.Policy;
+import seedu.address.model.person.policy.PolicyList;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -23,20 +23,20 @@ public class Person {
 
     // Data fields
     private final Address address;
-    private final Policy policy;
+    private final PolicyList policies;
     private final Set<Tag> tags = new HashSet<>();
 
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Policy policy, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, policy, tags);
+    public Person(Name name, Phone phone, Email email, Address address, PolicyList policies, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.policy = policy;
+        this.policies = policies;
         this.tags.addAll(tags);
     }
 
@@ -56,7 +56,7 @@ public class Person {
         return address;
     }
 
-    public Policy getPolicy() { return policy;}
+    public PolicyList getPolicyList() { return policies;}
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
@@ -98,14 +98,14 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getPolicy().equals(getPolicy())
+                && otherPerson.getPolicyList().equals(getPolicyList())
                 && otherPerson.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, policy, tags);
+        return Objects.hash(name, phone, email, address, policies, tags);
     }
 
     @Override
@@ -118,8 +118,8 @@ public class Person {
                 .append(getEmail())
                 .append("; Address: ")
                 .append(getAddress())
-                .append("; Policy: ")
-                .append(getPolicy());
+                .append("; Policies: ")
+                .append(getPolicyList());
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
