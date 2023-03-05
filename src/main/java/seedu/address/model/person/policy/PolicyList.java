@@ -2,7 +2,7 @@ package seedu.address.model.person.policy;
 
 import java.util.ArrayList;
 
-public class PolicyList {
+public class PolicyList extends ArrayList<Policy> {
 
     private ArrayList<Policy> policyList;
 
@@ -16,5 +16,4 @@ public class PolicyList {
     public ArrayList<Policy> getPolicyList() {
         return this.policyList;
     }
-
 }

@@ -56,7 +56,9 @@ public class Person {
         return address;
     }
 
-    public PolicyList getPolicyList() { return policies;}
+    public PolicyList getPolicyList() {
+        return policies;
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}

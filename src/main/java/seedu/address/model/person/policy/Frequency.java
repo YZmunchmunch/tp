@@ -1,7 +1,6 @@
 package seedu.address.model.person.policy;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
 
 public class Frequency {
 
@@ -25,13 +24,6 @@ public class Frequency {
         //checkArgument(isValidFrequency(freq), MESSAGE_CONSTRAINTS);
         this.frequency = freq;
     }
-
-//    /**
-//     * Returns true if a given string is a valid email.
-//     */
-//    public static boolean isValidFrequency(String test) {
-//        return test.matches(VALIDATION_REGEX);
-//    }
 
     @Override
     public String toString() {

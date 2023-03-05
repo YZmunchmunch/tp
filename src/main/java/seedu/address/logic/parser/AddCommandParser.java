@@ -42,7 +42,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         // add command does not allow adding policy straight away. Default is empty arraylist
-        PolicyList policies = new PolicyList(new ArrayList<>());
+        PolicyList policies = new PolicyList(null);
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Person person = new Person(name, phone, email, address, policies, tagList);
