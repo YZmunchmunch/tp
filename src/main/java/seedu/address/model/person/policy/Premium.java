@@ -3,6 +3,11 @@ package seedu.address.model.person.policy;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents a premium of a policy. A premium should only contain numbers and can be either an integer or a double.
+ * Provides methods to check if a given string is a valid premium amount and to construct a premium object
+ * from a valid string.
+ */
 public class Premium {
 
     public static final String MESSAGE_CONSTRAINTS =

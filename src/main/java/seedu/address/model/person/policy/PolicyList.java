@@ -2,6 +2,9 @@ package seedu.address.model.person.policy;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a list of policies, implemented as an {@link ArrayList} of {@link Policy} objects.
+ */
 public class PolicyList extends ArrayList<Policy> {
 
     private ArrayList<Policy> policyList;

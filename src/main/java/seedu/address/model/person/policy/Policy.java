@@ -1,15 +1,13 @@
 package seedu.address.model.person.policy;
-
-import seedu.address.model.tag.Tag;
-
-import java.time.LocalDate;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDate;
+import java.util.Objects;
+
+/**
+ * Represents an insurance policy that contains its name, start date, premium, frequency, and tags.
+ * A policy object is immutable, and all fields must be present and not null.
+ */
 public class Policy {
 
     // fields
@@ -17,18 +15,16 @@ public class Policy {
     private final LocalDate startdate;
     private final Premium premium;
     private final Frequency frequency;
-    private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Policy(PolicyName name, LocalDate startdate, Premium premium, Frequency frequency, Set<Tag> tags) {
-        requireAllNonNull(name, startdate, premium, frequency, tags);
+    public Policy(PolicyName name, LocalDate startdate, Premium premium, Frequency frequency) {
+        requireAllNonNull(name, startdate, premium, frequency);
         this.name = name;
         this.startdate = startdate;
         this.premium = premium;
         this.frequency = frequency;
-        this.tags.addAll(tags);
     }
 
     public PolicyName getPolicyName() {
@@ -47,18 +43,10 @@ public class Policy {
         return frequency;
     }
 
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
-    }
-
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, startdate, premium, frequency, tags);
+        return Objects.hash(name, startdate, premium, frequency);
     }
 
     @Override
@@ -72,11 +60,6 @@ public class Policy {
                 .append("; Premium: ")
                 .append(getFrequency());
 
-        Set<Tag> tags = getTags();
-        if (!tags.isEmpty()) {
-            builder.append("; Tags: ");
-            tags.forEach(builder::append);
-        }
         return builder.toString();
     }
 }

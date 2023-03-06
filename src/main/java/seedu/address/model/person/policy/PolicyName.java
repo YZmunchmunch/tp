@@ -3,6 +3,10 @@ package seedu.address.model.person.policy;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents the name of a policy.
+ * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
+ */
 public class PolicyName {
 
     public static final String MESSAGE_CONSTRAINTS =

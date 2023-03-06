@@ -2,9 +2,14 @@ package seedu.address.model.person.policy;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Represents the frequency of an insurance policy.
+ * Frequency can only take on any of the 3 values: "weekly", "monthly", "yearly", and it should not be blank.
+ */
 public class Frequency {
 
-    public static final String MESSAGE_CONSTRAINTS = "Frequency can only take on any of the 3 values, \"weekly\", \"monthly\", \"yearly\", and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Frequency can only take on any of the 3 values, "
+            + "\"weekly\", \"monthly\", \"yearly\", and it should not be blank";
 
     /*
      * The first character of the frequency must not be a whitespace,
