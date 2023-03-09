@@ -1,6 +1,10 @@
 package seedu.address.model.person.policy;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
+import java.util.Arrays;
+
 
 /**
  * Represents the frequency of an insurance policy.
@@ -15,19 +19,26 @@ public class Frequency {
      * The first character of the frequency must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    // public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String[] VALIDATION_REGEX = {"monthly", "quarterly", "yearly"};
 
-    public final FrequencyEnum frequency;
+    public final String frequency;
 
     /**
      * Constructs an {@code Frequency}.
      *
      * @param freq A valid frequency.
      */
-    public Frequency(FrequencyEnum freq) {
+    public Frequency(String freq) {
         requireNonNull(freq);
-        //checkArgument(isValidFrequency(freq), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidFrequency(freq), MESSAGE_CONSTRAINTS);
         this.frequency = freq;
+    }
+
+    /**
+     * Returns true if a given string is a valid frequency.
+     */
+    public static boolean isValidFrequency(String test) {
+        return Arrays.asList(VALIDATION_REGEX).contains(test);
     }
 
     @Override

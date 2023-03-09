@@ -1,7 +1,7 @@
 package seedu.address.model.person.policy;
+
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -12,14 +12,14 @@ public class Policy {
 
     // fields
     private final PolicyName name;
-    private final LocalDate startdate;
+    private final CustomDate startdate;
     private final Premium premium;
     private final Frequency frequency;
 
     /**
      * Every field must be present and not null.
      */
-    public Policy(PolicyName name, LocalDate startdate, Premium premium, Frequency frequency) {
+    public Policy(PolicyName name, CustomDate startdate, Premium premium, Frequency frequency) {
         requireAllNonNull(name, startdate, premium, frequency);
         this.name = name;
         this.startdate = startdate;
@@ -31,7 +31,7 @@ public class Policy {
         return name;
     }
 
-    public LocalDate getStartDate() {
+    public CustomDate getStartDate() {
         return startdate;
     }
 
@@ -41,6 +41,40 @@ public class Policy {
 
     public Frequency getFrequency() {
         return frequency;
+    }
+
+    /**
+     * Returns true if both policies have the same policy name.
+     * This defines a weaker notion of equality between two policies.
+     */
+    public boolean isSamePolicy(Policy otherPolicy) {
+        if (otherPolicy == this) {
+            return true;
+        }
+
+        return otherPolicy != null
+                && otherPolicy.getPolicyName().equals(getPolicyName());
+    }
+
+    /**
+     * Returns true if both policies have the same identity and data fields.
+     * This defines a stronger notion of equality between two policies.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Policy)) {
+            return false;
+        }
+
+        Policy otherPolicy = (Policy) other;
+        return otherPolicy.getPolicyName().equals(getPolicyName())
+                && otherPolicy.getStartDate().equals(getStartDate())
+                && otherPolicy.getPremium().equals(getPremium())
+                && otherPolicy.getFrequency().equals(getFrequency());
     }
 
     @Override
