@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.person.policy.Policy;
+import seedu.address.model.policy.Policy;
 
 /**
  * A utility class containing a typical set of policies for testing purposes.
